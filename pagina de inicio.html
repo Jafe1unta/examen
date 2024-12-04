@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Netflix</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ytimg.com/vi/t-vPdKu1YCY/maxresdefault.jpg'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100vh;
+            color: white;
+            overflow: hidden;
+        }
+        .header {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: 10;
+        }
+        .header img {
+            height: 36px;
+            margin-right: 40px; /* Añade espacio entre el logo y los enlaces de navegación */
+        }
+        .navbar {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .iconos {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* Mueve los íconos a la derecha */
+        }
+        .iconos img {
+            height: 24px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .profile-img {
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            padding: 20px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero-content .description {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .hero-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .hero-buttons a:hover {
+            background-color: #f40612;
+        }
+        /* Estilos para el modal desplegable */
+        .info {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 4px;
+            color: white;
+            max-width: 800px;
+            margin-top: 20px;
+            max-height: 70%;
+            overflow-y: auto;
+        }
+        .info h2, .info p, .info button {
+            margin-bottom: 15px;
+        }
+        .close {
+            display: block;
+            text-align: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+        <div class="navbar">
+            <a href="#">Inicio</a>
+            <a href="#">Series</a>
+            <a href="#">Películas</a>
+            <a href="#">Novedades populares</a>
+            <a href="#">Mi lista</a>
+            <a href="#">Explora por idiomas</a>
+        </div>
+        <div class="iconos">
+            <img src="https://ainamoreno.github.io/Reto-Netflix/img/lupa.png" alt="Buscar" title="Buscar">
+            <img src="https://www.pngkey.com/png/full/38-385643_notification-icon-png.png" alt="Notificaciones" title="Notificaciones">
+            <img src="https://i.pinimg.com/736x/e6/a0/24/e6a0248054c9ac98830440b81fcdb1ca--shaun-the-sheep-graphic-wall.jpg" alt="Perfil" class="profile-img">
+        </div>
+    </div>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Minions: Nace un villano</h1>
+            <p class="description">Illumination presenta la tercera película de Minions, ¡número 3 en películas hoy!</p>
+            <div class="hero-buttons">
+                <a id="play-button" href="https://www.youtube.com/watch?v=nSyH65UR75A&list=PLn33tKV3kSZ9k9FDqa9RTO-UNtOJsRUGS">Reproducir</a>
+                <a id="info-button" href="#">Más información</a>
+            </div>
+            <div class="info" id="info">
+                <span class="close" id="close-button">&times;</span>
+                <h2>Minions: Nace un villano</h2>
+                <p>Illumination presenta la tercera película de Minions, ¡número 3 en películas hoy!</p>
+                <button>Reproducir</button>
+                <p>2022 · 1 h 27 min · Audio especial</p>
+                <p>N.° 3 en películas hoy</p>
+                <p>Gru, un niño astuto, quiere ser un supervillano. Los minions quieren tener un jefe. Es la combinación perfecta: hasta los chicos malos necesitan la ayuda de sus amigos.</p>
+                <p><strong>Elenco:</strong> Steve Carell, Pierre Coffin, Alan Arkin, más</p>
+                <p><strong>Géneros:</strong> Películas para toda la familia, Películas para ver en familia, Películas para reír</p>
+                <p><strong>Este título es:</strong> Optimista, Disparatado</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funcionalidad de los botones
+        document.getElementById('play-button').onclick = function() {
+            window.location.href = 'reproducir.html';
+        };
+
+        document.getElementById('info-button').onclick = function() {
+            var info = document.getElementById('info');
+            if (info.style.display === 'none' || info.style.display === '') {
+                info.style.display = 'block';
+            } else {
+                info.style.display = 'none';
+            }
+        };
+
+        document.getElementById('close-button').onclick = function() {
+            document.getElementById('info').style.display = 'none';
+        };
+    </script>
+</body>
+</html>
+
